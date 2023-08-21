@@ -1,28 +1,23 @@
 import './App.css'
-
-import responsePokemons from './mocks/response-pokemons.json'
-
-const PokemonsList = () => {
-  const pokemons = responsePokemons.results
-
-  return (
-    pokemons.map((pokemon, index) => <p key={index}>{pokemon.name}</p>)
-  )
-}
+import { PokemonsList } from './components/PokemonList'
+import { usePokemons } from './hooks/usePokemons'
 
 function App () {
+  const { pokemons } = usePokemons()
+
   return (
     <>
       <div className='page'>
         <header>
           <h1>Pokemon finder 🔍</h1>
           <form className='form'>
-            <input placeholder='Eevee, bulbasaur...' type='text' />
+            <label htmlFor="query">Pokemon name</label>
+            <input name="query" placeholder='Picachu, Bulbasaur...' type='text' />
             <button type='submit'>Search</button>
           </form>
         </header>
         <main>
-          {<PokemonsList />}
+          <PokemonsList pokemons={pokemons}/>
         </main>
       </div>
     </>
