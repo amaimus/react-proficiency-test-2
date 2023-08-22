@@ -1,17 +1,28 @@
-/* .page {
+.page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 form {
   display: flex;
   align-items: center;
   justify-content: center;
-} */
+}
 
-/* main {
-  display: flex;
-  justify-content: center;
-} */
+.pokemons-list {
+  list-style: none;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}

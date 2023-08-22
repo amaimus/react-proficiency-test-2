@@ -1,20 +1,42 @@
 import './App.css'
 import { PokemonsList } from './components/PokemonList'
 import { usePokemons } from './hooks/usePokemons'
+import { useSearch } from './hooks/useSearch'
 
 function App () {
   const { pokemons } = usePokemons()
+  const { search, setSearch, error } = useSearch('')
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(search)
+  }
+
+  const handleChange = (event) => {
+    setSearch(event.target.value)
+  }
 
   return (
     <>
-      <div className='page'>
+      <div>
         <header>
           <h1>Pokemon finder 🔍</h1>
-          <form className='form'>
-            <label htmlFor="query">Pokemon name</label>
-            <input name="query" placeholder='Picachu, Bulbasaur...' type='text' />
+          <form className='form' onSubmit={handleSubmit}>
+            <label htmlFor='query'>Pokemon name</label>
+            <input
+              onChange={handleChange}
+              value={search}
+              name='query'
+              placeholder='Picachu, Bulbasaur...'
+              type='text'
+            />
             <button type='submit'>Search</button>
           </form>
+          {
+            error && <div>
+              <p>{error}</p>
+            </div>
+          }
         </header>
         <main>
           <PokemonsList pokemons={pokemons}/>

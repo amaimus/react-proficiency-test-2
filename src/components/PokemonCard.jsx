@@ -3,13 +3,14 @@ import './pokemonCard.css'
 
 export function PokemonCard ({ pokemon }) {
   return (
-    <div className="pokemonCard">
+    <>
       { pokemon &&
-        <>
-          <img src={pokemon.image} alt="" />
-          <span>{pokemon.name}</span>
-        </>
+        <li className='pokemon-card'>
+          <img src={pokemon.image} alt='' />
+          <h4>{pokemon.name}</h4>
+          <span>height: {pokemon.height}</span>
+        </li>
       }
-    </div>
+    </>
   )
 }

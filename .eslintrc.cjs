@@ -18,5 +18,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "indent": ["error", 2],
+    "jsx-quotes": ["error", "prefer-single"]
   },
 }

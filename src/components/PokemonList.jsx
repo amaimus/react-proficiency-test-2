@@ -7,10 +7,10 @@ export function PokemonsList ({ pokemons }) {
   if (!hasPokemons) return <h4> We couldnt find pokemons</h4>
 
   return (
-    <>
+    <ul className='pokemons-list'>
       {pokemons.map((pokemon) =>
         <PokemonCard pokemon={pokemon} key={pokemon.id}/>
       )}
-    </>
+    </ul>
   )
 }
