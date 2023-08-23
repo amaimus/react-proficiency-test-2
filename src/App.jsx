@@ -5,7 +5,7 @@ import { useSearch } from './hooks/useSearch'
 
 function App () {
   const { search, setSearch, error } = useSearch('')
-  const { pokemons, getPokemons } = usePokemons({ search })
+  const { pokemons, isLoading, getPokemons } = usePokemons({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -39,7 +39,9 @@ function App () {
           }
         </header>
         <main>
-          <PokemonList pokemons={pokemons}/>
+          {
+            isLoading ? <p>Loading...</p> : <PokemonList pokemons={pokemons}/>
+          }
         </main>
       </div>
     </>
