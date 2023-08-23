@@ -6,18 +6,19 @@ export function usePokemons ({ search, sort }) {
   const [isLoading, setIsLoading] = useState(false)
   const previousSearch = useRef(search)
 
-  const getPokemons = () => {
-    if (previousSearch.current === search) return
-    previousSearch.current = search
+  const getPokemons = useMemo(() => {
+    return () => {
+      if (previousSearch.current === search) return
+      previousSearch.current = search
 
-    setIsLoading(true)
-    searchPokemons({ search })
-      .then(newPokemons => setPokemons(newPokemons))
-      .finally(() => setIsLoading(false))
-  }
+      setIsLoading(true)
+      searchPokemons({ search })
+        .then(newPokemons => setPokemons(newPokemons))
+        .finally(() => setIsLoading(false))
+    }
+  }, [search])
 
   const sortedPokemons = useMemo(() => {
-    console.log('sortedPokemons')
     return sort
       ? [...pokemons].sort((a, b) => a.name.localeCompare(b.name))
       : pokemons
