@@ -1,11 +1,13 @@
 import './App.css'
+import { useState } from 'react'
 import { PokemonList } from './components/PokemonList'
 import { usePokemons } from './hooks/usePokemons'
 import { useSearch } from './hooks/useSearch'
 
 function App () {
+  const [sort, setSort] = useState(false)
   const { search, setSearch, error } = useSearch('')
-  const { pokemons, isLoading, getPokemons } = usePokemons({ search })
+  const { pokemons, isLoading, getPokemons } = usePokemons({ search, sort })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -16,6 +18,9 @@ function App () {
     setSearch(event.target.value)
   }
 
+  const handleSort = () => {
+    setSort(previousSort => !previousSort)
+  }
   return (
     <>
       <div>
@@ -30,6 +35,7 @@ function App () {
               placeholder='Picachu, Bulbasaur...'
               type='text'
             />
+            <input type='checkbox' onChange={handleSort} checked={sort}/>
             <button type='submit'>Search</button>
           </form>
           {

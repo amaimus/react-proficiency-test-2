@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { searchPokemons } from '../services/pokemons.js'
 
-export function usePokemons ({ search }) {
+export function usePokemons ({ search, sort }) {
   const [pokemons, setPokemons] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const previousSearch = useRef(search)
@@ -16,5 +16,12 @@ export function usePokemons ({ search }) {
       .finally(() => setIsLoading(false))
   }
 
-  return { pokemons, isLoading, getPokemons }
+  const sortedPokemons = useMemo(() => {
+    console.log('sortedPokemons')
+    return sort
+      ? [...pokemons].sort((a, b) => a.name.localeCompare(b.name))
+      : pokemons
+  }, [sort, pokemons])
+
+  return { pokemons: sortedPokemons, isLoading, getPokemons }
 }
