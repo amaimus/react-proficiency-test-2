@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { PokemonCard } from './PokemonCard.jsx'
 
-export function PokemonsList ({ pokemons }) {
+export function PokemonList ({ pokemons }) {
   const hasPokemons = pokemons?.length > 0
 
   if (!hasPokemons) return <h4> We couldnt find pokemons</h4>

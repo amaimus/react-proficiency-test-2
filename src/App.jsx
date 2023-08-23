@@ -1,15 +1,15 @@
 import './App.css'
-import { PokemonsList } from './components/PokemonList'
+import { PokemonList } from './components/PokemonList'
 import { usePokemons } from './hooks/usePokemons'
 import { useSearch } from './hooks/useSearch'
 
 function App () {
-  const { pokemons } = usePokemons()
   const { search, setSearch, error } = useSearch('')
+  const { pokemons, getPokemons } = usePokemons({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(search)
+    getPokemons()
   }
 
   const handleChange = (event) => {
@@ -39,7 +39,7 @@ function App () {
           }
         </header>
         <main>
-          <PokemonsList pokemons={pokemons}/>
+          <PokemonList pokemons={pokemons}/>
         </main>
       </div>
     </>
