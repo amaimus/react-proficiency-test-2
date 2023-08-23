@@ -1,13 +1,19 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { PokemonList } from './components/PokemonList'
 import { usePokemons } from './hooks/usePokemons'
 import { useSearch } from './hooks/useSearch'
+import debounce from 'just-debounce-it'
 
 function App () {
   const [sort, setSort] = useState(false)
   const { search, setSearch, error } = useSearch('')
   const { pokemons, isLoading, getPokemons } = usePokemons({ search, sort })
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedGetPokemons = useCallback(
+    debounce(search => getPokemons({ search }), 300), []
+  )
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -15,12 +21,15 @@ function App () {
   }
 
   const handleChange = (event) => {
-    setSearch(event.target.value)
+    const newSearch = event.target.value
+    setSearch(newSearch)
+    debouncedGetPokemons(newSearch)
   }
 
   const handleSort = () => {
     setSort(previousSort => !previousSort)
   }
+
   return (
     <>
       <div>
