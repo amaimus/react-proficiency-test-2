@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, useCallback } from 'react'
+import { useRef, useState, useMemo, useCallback, useEffect } from 'react'
 import { searchPokemons } from '../services/pokemons.js'
 
 export function usePokemons ({ search, sort }) {
@@ -6,8 +6,12 @@ export function usePokemons ({ search, sort }) {
   const [isLoading, setIsLoading] = useState(false)
   const previousSearch = useRef(search)
 
+  useEffect(() => {
+    console.log('pokemons')
+    getPokemons({ search })
+  }, [])
   const getPokemons = useCallback(({ search }) => {
-    if (previousSearch.current === search) return
+    /* if (previousSearch.current === search) return */
     previousSearch.current = search
 
     setIsLoading(true)

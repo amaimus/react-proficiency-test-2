@@ -8,7 +8,7 @@ function fakeFetch ({ search }) {
         pokemon => pokemon.name.includes(search.toLowerCase())
       )
       resolve(data)
-    }, 500)
+    }, 200)
   })
 }
 
