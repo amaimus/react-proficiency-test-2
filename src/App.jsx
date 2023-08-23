@@ -11,7 +11,7 @@ function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    getPokemons()
+    getPokemons({ search })
   }
 
   const handleChange = (event) => {

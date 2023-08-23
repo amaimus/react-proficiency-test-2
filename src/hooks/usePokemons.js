@@ -7,7 +7,7 @@ export function usePokemons ({ search, sort }) {
   const previousSearch = useRef(search)
 
   const getPokemons = useMemo(() => {
-    return () => {
+    return ({ search }) => {
       if (previousSearch.current === search) return
       previousSearch.current = search
 
@@ -16,7 +16,7 @@ export function usePokemons ({ search, sort }) {
         .then(newPokemons => setPokemons(newPokemons))
         .finally(() => setIsLoading(false))
     }
-  }, [search])
+  }, [])
 
   const sortedPokemons = useMemo(() => {
     return sort
