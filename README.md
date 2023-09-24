@@ -1,5 +1,8 @@
 # react-proficiency-test-2
 
+![image](https://github.com/amaimus/react-proficiency-test-2/assets/35699916/5419d467-0bdc-45e1-8e16-095c0bd83730)
+
+
 Crea una aplicación para buscar películas
 
 API a usar: - https://pokeapi.co/api/v2/pokemon/ 
