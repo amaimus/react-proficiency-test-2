@@ -8,9 +8,9 @@ Prueba técnica para Desarrolladores de React. Usamos el API de Pokémon para ob
 
 Technical test for React Developers. We use the Pokémon API to get the data. We list the records in a responsive grid and add filtering. We prevent the same search from being done twice in a row and the search from being performed continuously while typing, using debounce.
 
---- 
-
 ![react-proficiency-test-2](https://github.com/amaimus/react-proficiency-test-2/assets/35699916/bd55f3d4-1f3d-44b3-b19e-597e29ffb93a)
+
+--- 
 
 API: - https://pokeapi.co/api/v2/pokemon/ 
 
