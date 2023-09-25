@@ -1,10 +1,10 @@
 # React Proficiency Test 2
 
-**Spanish** 🟥
+🟥 **Español**
 
 Prueba técnica para Desarrolladores de React. Usamos el API de Pokémon para obtener los datos. Listamos los registros en un grid responsive y añadimos filtrado. Evitamos que la misma búsqueda se haga dos veces seguidas y que la búsqueda se realice continuamente mientras se escribe, mediante debounce.
 
-**English** 🟦 
+🟦 **English**
 
 Technical test for React Developers. We use the Pokémon API to get the data. We list the records in a responsive grid and add filtering. We prevent the same search from being done twice in a row and the search from being performed continuously while typing, using debounce.
 
